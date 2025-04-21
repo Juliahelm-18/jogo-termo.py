@@ -35,6 +35,10 @@ if quantidade == 5:
             print("Parabéns você acertou a palavra secreta!")
         #Caso o jogador acerte de primeira
         elif palpite != palavra_secreta:
+            caracteres = list(palpite)
+            l1, l2, l3, l4, l5 = caracteres
+            letras = list(palavra_secreta)
+            c1, c2, c3, c4, c5 = letras
             tentativa += 1
 
 import random
