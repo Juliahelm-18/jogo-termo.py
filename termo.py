@@ -20,7 +20,7 @@ if quantidade == 5:
     #Variavel para conseguir contar as tentativas do jogador
     while tentativa <= 5:
         #Esse while é para funcionar até que o jogador atinja o maximo de tentativas
-        cinco = ["nuvem", "poder", "diabo", "nesta", "arara"]
+        cinco = ["nuvem", "poder", "diabo", "nesta", "nariz"]
         palavra_secreta = random.choice(cinco)
         #A palavra secreta será sorteada através do random.choice
         
@@ -35,9 +35,17 @@ if quantidade == 5:
             print("Parabéns você acertou a palavra secreta!")
         #Caso o jogador acerte de primeira
 
+        
+        palavra_vazia = '_' * 5
+        letra_digitada = list(palpite)
+            if letra_digitada in palavra_secreta:
+                indice_da_letra = palavra_secreta.index(letra_digitada)
+                palavra_vazia[indice_da_letra] = letra_digitada
+                print(f"{palavra_vazia}")
+        
+        palpite = input("Digite um novo palpite: ")
+        tentativa += 1
 
-
-            
 
 import random
 #Para o random.choice funcionar
