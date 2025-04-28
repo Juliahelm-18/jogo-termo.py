@@ -69,7 +69,7 @@ if quantidade_letras == 5:
         tentativa += 1
         # Essa linha irá adicionar 1 na variavel tentativa, para contar as tentativas do jogador
 
-    if tentativa >= 5:
+    if tentativa > 5:
         print(f"Você perdeu! A palavra secreta era {palavra_secreta}")
         # Essa linha irá imprimir na tela que o jogador perdeu, e mostrar a palavra secreta, caso o jogador não acerte a palavra secreta até o número máximo de tentativas
 
