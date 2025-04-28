@@ -59,8 +59,7 @@ if quantidade_letras == 5:
         for letra in palpite:
             if letra in palavra_secreta and letra not in letras_ja_mostradas:
                 # Essa linha irá verificar se a letra do palpite está na palavra secreta e se a letra não foi mostrada antes
-                print(f'A palavra contém a letra "{letras_descobertas}". ')
-                letras_descobertas.append(letra)
+                print(f'A palavra contém a letra "{letra}". ')
                 # Essa linha irá imprimir na tela que a letra está na palavra secreta, mas no lugar errado
                 letras_ja_mostradas.add(letra)
                 # Essa linha irá adicionar a letra no conjunto de letras já mostradas, para não repetir as letras que já foram mostradas
