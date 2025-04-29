@@ -19,7 +19,7 @@ if quantidade_letras == 5:
     tentativa = 1
     # Variavel para conseguir contar as tentativas do jogador
     
-    
+    CINCO_LETRAS = ["nuvem", "poder", "diabo", "nesta", "nariz"]
     #Cinco letras é uma lista com palavras de 5 letras, que serão utilizadas para o jogo
     palavra_secreta = random.choice(CINCO_LETRAS)
     # A palavra secreta será sorteada através do random.choice
