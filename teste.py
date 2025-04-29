@@ -25,6 +25,7 @@ if quantidade_letras == 7:
     palavra_secreta = random.choice(SETE_LETRAS)
     letras_descobertas = ['_'] * 7
 
+
 def jogo(quantidade_letras):
     while tentativa <= quantidade_letras:
         palpite = input("Digite seu palpite para adivinhar a palavra secreta: ")
