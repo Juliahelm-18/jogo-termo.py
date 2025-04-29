@@ -53,7 +53,6 @@ def jogo(quantidade_letras):
         
         print("Palavra até agora: ", "".join(letras_descobertas))
         tentativa += 1
-        print(f'Tentativas até agora: {tentativa}')
 
         if tentativa > quantidade_letras:
             print(f"Você perdeu! A palavra secreta era {palavra_secreta}")
