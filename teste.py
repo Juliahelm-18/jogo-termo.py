@@ -21,29 +21,35 @@ elif quantidade_letras == 7:
 def adivinhacao(quantidade_letras):
   tentativa = 1
   letras_descobertas * (quantidade_letras)
-
+ 
   while tentativa <= (quantidade_letras):
-    
+ 
     palpite = input("Digite seu palpite para tentar adivinhar a palavra: ")
-    
+ 
     if len(palpite) != (quantidade_letras):
         print(f"A palavra não tem {quantidade_letras}, digite novamente")
         palpite = input("Digite seu palpite para tentar adivinhar a palavra: ")
-
+ 
     if palpite == palavra_secreta:
         print("Parabéns você acertou a palavra secreta!")
         break 
-
+ 
     resultado = ''
     for i in range(quantidade_letras):
         if palpite[i] = palavra_secreta[i]:
             letras_descobertas[i] = palpite[i]
-    
+ 
     letras_ja_mostradas = set()
-
+ 
     for letra in palpite:
         if letra in palavra_secreta and letra not in letras_ja_mostradas:
-            print(f'A palavra contém a letra {letra}')
+            print(f'A palavra contém a letra: {letra}')
+            letras_ja_mostradas.add(letra)
+
+    print("Palavra até agora: ", "".join(letras_descobertas))
+
+    if tentativa > (quantidade_letras):
+        print(f"Você perdeu, a palavra era: {palavra_secreta}")
 
 
   
