@@ -18,9 +18,7 @@ elif quantidade_letras == 6:
 elif quantidade_letras == 7:
     palavra_secreta = random.choice(SETE_LETRAS)
 
-def adivinhacao(quantidade_letras):
-  tentativa = 1
-  letras_descobertas * (quantidade_letras)
+tentativas = 1
  
   while tentativa <= (quantidade_letras):
  
@@ -47,6 +45,7 @@ def adivinhacao(quantidade_letras):
             letras_ja_mostradas.add(letra)
 
     print("Palavra até agora: ", "".join(letras_descobertas))
+    tentativas += 1
 
     if tentativa > (quantidade_letras):
         print(f"Você perdeu, a palavra era: {palavra_secreta}")
