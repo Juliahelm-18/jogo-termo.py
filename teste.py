@@ -11,7 +11,58 @@ CINCO_LETRAS = ["nuvem", "poder", "diabo", "nesta", "nariz"]
 SEIS_LETRAS = ["utopia", "casual", "hostil", "anseio", "gentil"]
 SETE_LETRAS = ["mochila", "lasanha", "cozinha", "atacado", "alergia"]
 
+tentativa = 1
+
 if quantidade_letras == 5:
+    palavra_secreta = random.choice(CINCO_LETRAS)
+    letras_descobertas = ['_'] * 5
+
+if quantidade_letras == 6:
+    palavra_secreta = random.choice(SEIS_LETRAS)
+    letras_descobertas = ['_'] * 6
+
+if quantidade_letras == 7:
+    palavra_secreta = random.choice(SETE_LETRAS)
+    letras_descobertas = ['_'] * 7
+
+def jogo(quantidade_letras):
+    while tentativa <= quantidade_letras:
+        palpite = input("Digite seu palpite para adivinhar a palavra secreta: ")
+
+        if len(palpite) != quantidade_letras:
+            print('Seu palpite tem que estar de acordo com a quantidade de letras!')
+            palpite = input("Digite seu palpite para adivinhar a palavra secreta: ")
+
+        if palpite == palavra_secreta:
+            print('Parabéns! Você ganhou o jogo.')
+            break 
+
+        resultado = ''
+
+        for i in range(quantidade_letras):
+            if palpite[i] == palavra_secreta[i]:
+                letras_descobertas[i] = palpite [i]
+
+        letras_ja_mostradas = set()
+
+        for letra in palpite:
+            if letra in palavra_secreta and letra not in letras_ja_mostradas:
+                print(f'A palavra contém a letra "{letra}". ')
+                letras_ja_mostradas.add(letra)
+        
+        print("Palavra até agora: ", "".join(letras_descobertas))
+        tentativa += 1
+        print(f'Tentativas até agora: {tentativa}')
+
+        if tentativa > quantidade_letras:
+        print(f"Você perdeu! A palavra secreta era {palavra_secreta}")
+
+
+
+
+
+
+
 
 
 
