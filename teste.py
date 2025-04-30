@@ -48,14 +48,16 @@ def jogo(quantidade_letras):
 
         for letra in palpite:
             if letra in palavra_secreta and letra not in letras_ja_mostradas:
-                print(f'A palavra contém a letra "{letra}". ')
                 letras_ja_mostradas.add(letra)
-        
-        print("Palavra até agora: ", "".join(letras_descobertas))
+
+            print(f'A palavra contém as letras:{", ".join(sorted(letras_ja_mostradas))}')
+               
         tentativa += 1
 
         if tentativa > quantidade_letras:
             print(f"Você perdeu! A palavra secreta era {palavra_secreta}")
+        
+jogo(quantidade_letras)
           
 
 
