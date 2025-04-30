@@ -11,7 +11,7 @@ CINCO_LETRAS = ["nuvem", "poder", "diabo", "nesta", "nariz"]
 SEIS_LETRAS = ["utopia", "casual", "hostil", "anseio", "gentil"]
 SETE_LETRAS = ["mochila", "lasanha", "cozinha", "atacado", "alergia"]
 
-tentativa = 1
+
 
 if quantidade_letras == 5:
     palavra_secreta = random.choice(CINCO_LETRAS)
@@ -27,6 +27,8 @@ if quantidade_letras == 7:
 
 
 def jogo(quantidade_letras):
+    tentativa = 1
+    
     while tentativa <= quantidade_letras:
         palpite = input("Digite seu palpite para adivinhar a palavra secreta: ")
 
