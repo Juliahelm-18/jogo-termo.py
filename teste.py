@@ -28,7 +28,7 @@ if quantidade_letras == 7:
 
 def jogo(quantidade_letras):
     tentativa = 1
-    
+
     while tentativa <= quantidade_letras:
         palpite = input("Digite seu palpite para adivinhar a palavra secreta: ")
 
@@ -53,6 +53,7 @@ def jogo(quantidade_letras):
                 letras_ja_mostradas.add(letra)
 
             print(f'A palavra contém as letras:{", ".join(sorted(letras_ja_mostradas))}')
+            print("Palavra até agora: ", "".join(letras_descobertas))
                
         tentativa += 1
 
