@@ -81,7 +81,7 @@ def jogo(quantidade_letras):
 
         if tentativa > quantidade_letras:
             print(f"Você perdeu! A palavra secreta era {palavra_secreta}")
-            print(f"Você utilizou {tentativa} tentativas para tentar adivinhar a palavra secreta.")
+            print(f"Você utilizou {tentativa - 1} tentativas para tentar adivinhar a palavra secreta.")
             # Se o número de tentativas for maior que a quantidade de letras, o jogador perdeu e o jogo termina, mostrando a palavra secreta
         
 jogo(quantidade_letras)
