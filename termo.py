@@ -1,88 +1,93 @@
-import random 
+import random
 
-nome = input("Digite seu nome para iniciar o jogo:")
-# Pergunta o nome do jogador e armazena na variável nome
-
-print(f"Bem vindo {nome} antes de iniciar o jogo vamos lhe mostrar as regras: \n- Você deve escolher a dificuldade do jogo, se serão palavras de 5, 6 ou 7 letras; \n- As tentativas são relacionadas com a quantidade de letras, ou seja, 5, 6 ou 7 tentativas; \n- Após o palpite o jogo irá mostrar onde ocorreram acertos e se as letras existem na palavra; \n- O jogo terminará quando você acertar ou quando não houver mais tentativas. ")
-print("Vamos iniciar o jogo termo.py!")
-# Mostra as regras para o jogador e inicia o jogo
-
-quantidade_letras = int(input("Digite a quantidade de letras que você deseja que a palavra secreta tenha, se serão 5, 6 ou 7 letras: "))
-# Pergunta a quantidade de letras que o jogador deseja e armazena na variável quantidade_letras, assim o jogo poderá saber a dificuldade que o jogador deseja
-
+# Listas de palavras
 CINCO_LETRAS = ["nuvem", "poder", "diabo", "nesta", "nariz"]
 SEIS_LETRAS = ["utopia", "casual", "hostil", "anseio", "gentil"]
 SETE_LETRAS = ["mochila", "lasanha", "cozinha", "atacado", "alergia"]
-# Cria listas com palavras de 5, 6 e 7 letras para o jogo, as listas servem para armazenar palavras aleartórias que serão sorteadas no jogo
 
-if quantidade_letras == 5:
-    palavra_secreta = random.choice(CINCO_LETRAS)
-    letras_descobertas = ['_'] * 5
-    # Se a quantidade de letras for 5, sorteia uma palavra da lista de 5 letras e cria uma lista de letras descobertas com 5 espaços em branco para mostrar quais estão no local correto
+# Função para escolher palavra e inicializar letras descobertas
+def escolher_palavra(quantidade_letras):
+    if quantidade_letras == 5:
+        palavra = random.choice(CINCO_LETRAS)
+    elif quantidade_letras == 6:
+        palavra = random.choice(SEIS_LETRAS)
+    elif quantidade_letras == 7:
+        palavra = random.choice(SETE_LETRAS)
+    else:
+        return None, None
+    letras_descobertas = ['_'] * quantidade_letras
+    return palavra, letras_descobertas
 
-if quantidade_letras == 6:
-    palavra_secreta = random.choice(SEIS_LETRAS)
-    letras_descobertas = ['_'] * 6
-    # Se a quantidade de letras for 6, sorteia uma palavra da lista de 6 letras e cria uma lista de letras descobertas com 6 espaços em branco para mostrar quais estão no local correto
-
-if quantidade_letras == 7:
-    palavra_secreta = random.choice(SETE_LETRAS)
-    letras_descobertas = ['_'] * 7
-    # Se a quantidade de letras for 7, sorteia uma palavra da lista de 7 letras e cria uma lista de letras descobertas com 7 espaços em branco para mostrar quais estão no local correto
-
-
-def jogo(quantidade_letras):
-    # Inicia o jogo com a quantidade de letras escolhida pelo jogador
-    tentativa = 1
-    # Cria uma variável nomeada de tentativa que inicia com 1, para contar quantas tentativas o jogador já fez
-    # Inicia com o número 1, pois iniciando do 0 daria uma tentativa a mais para o jogador.
-
-    while tentativa <= quantidade_letras:
-        # Enquanto o número de tentativas for menor ou igual a quantidade de letras, o jogo continua (caso o jogador não acerte a palavra antes de acabar as tentativas)
-        palpite = input("Digite seu palpite para adivinhar a palavra secreta: ").lower()
-        # Pergunta ao jogador qual é o palpite e transforma em minúscula para evitar erros de digitação e erros no jogo
-
+# Função para pedir palpite válido
+def pedir_palpite(quantidade_letras):
+    while True:
+        palpite = input(f"Digite seu palpite ({quantidade_letras} letras): ").lower()
         if len(palpite) != quantidade_letras:
-            print('Seu palpite tem que estar de acordo com a quantidade de letras!')
-            palpite = input("Digite seu palpite para adivinhar a palavra secreta: ").lower()
-            # Se o palpite não tiver a mesma quantidade de letras que a palavra secreta, pede para o jogador digitar novamente
+            print(f"Seu palpite deve ter exatamente {quantidade_letras} letras.")
+        else:
+            return palpite
+
+# Função para atualizar letras no lugar certo
+def atualizar_letras(palpite, palavra_secreta, letras_descobertas):
+    for i in range(len(palpite)):
+        if palpite[i] == palavra_secreta[i]:
+            letras_descobertas[i] = palpite[i]
+
+# Função para mostrar status do jogo
+def mostrar_status(palpite, palavra_secreta, letras_descobertas):
+    letras_certas_fora_lugar = set()
+    for letra in palpite:
+        if letra in palavra_secreta:
+            letras_certas_fora_lugar.add(letra)
+    print(f"Letras no lugar certo: {' '.join(letras_descobertas)}")
+    print(f"Letras que existem na palavra (posição errada ou certa): {', '.join(sorted(letras_certas_fora_lugar))}")
+
+# Função principal do jogo
+def jogo():
+    nome = input("Digite seu nome para iniciar o jogo: ")
+    print(f"\nBem-vindo, {nome}! Aqui estão as regras:\n"
+          "- Escolha a dificuldade do jogo: palavras de 5, 6 ou 7 letras.\n"
+          "- O número de tentativas é igual à quantidade de letras.\n"
+          "- O jogo mostrará letras corretas e letras existentes na palavra.\n"
+          "- O jogo termina quando você acertar ou acabar as tentativas.\n")
+
+    while True:
+        try:
+            quantidade_letras = int(input("Escolha a quantidade de letras da palavra secreta (5, 6 ou 7): "))
+            if quantidade_letras not in [5, 6, 7]:
+                print("Escolha inválida. Digite 5, 6 ou 7.")
+                continue
+            break
+        except ValueError:
+            print("Digite um número válido.")
+
+    palavra_secreta, letras_descobertas = escolher_palavra(quantidade_letras)
+    tentativas = 0
+    max_tentativas = quantidade_letras
+
+    while tentativas < max_tentativas:
+        palpite = pedir_palpite(quantidade_letras)
+        tentativas += 1
 
         if palpite == palavra_secreta:
-            print('Parabéns! Você ganhou o jogo.')
-            print(f"Você utilizou {tentativa} tentativas para acertar a palavra secreta.")
-            # Se o palpite for igual a palavra secreta, o jogador ganhou e o jogo termina, mostrando quantas tentativas foram usadas
-            break 
-            # O break serve para quebrar o loop do while
+            print(f"Parabéns, {nome}! Você acertou a palavra secreta '{palavra_secreta}' em {tentativas} tentativas!")
+            return
 
-        resultado = ''
-        # Cria uma variável nomeada resultado que inicia vazia, para armazenar o resultado do palpite do jogador
+        atualizar_letras(palpite, palavra_secreta, letras_descobertas)
+        mostrar_status(palpite, palavra_secreta, letras_descobertas)
+        print(f"Tentativas restantes: {max_tentativas - tentativas}\n")
 
-        for i in range(quantidade_letras):
-            if palpite[i] == palavra_secreta[i]:
-                letras_descobertas[i] = palpite [i]
-                # Se a letra do palpite for igual a letra da palavra secreta, a letra descoberta é igual a letra do palpite, ou seja, o jogador acertou a letra e ela é mostrada na tela dentro de uma lista
+    print(f"Você perdeu! A palavra secreta era '{palavra_secreta}'. Tente novamente, {nome}!")
 
-        letras_ja_mostradas = set()
-        # Cria uma variável letras_ja_mostradas que inicia vazia, para armazenar as letras que já foram mostradas na tela, assim o jogador não fica confuso com letras repetidas
+# Chamada do jogo
+jogo()
 
-        for letra in palpite:
-            if letra in palavra_secreta and letra not in letras_ja_mostradas:
-                letras_ja_mostradas.add(letra)
-                # Se a letra do palpite estiver na palavra secreta e não estiver na lista de letras já mostradas, adiciona a letra na lista de letras já mostradas
-
-        print(f'A palavra contém as letras: {", ".join(sorted(letras_ja_mostradas))}')
-        # Mostra as letras que o jogador acertou, mas errou o lugar, ordenadas em ordem alfabética, para facilitar a visualização
-        print(f'Letras no lugar certo: {" ".join(letras_descobertas)}')
-        # Mostra as letras que o jogador acertou o lugar na palavra secreta
-
-               
-        tentativa += 1
-        # Adiciona 1 na variável tentativa, para contar quantas tentativas o jogador já fez
-
-        if tentativa > quantidade_letras:
-            print(f"Você perdeu! A palavra secreta era {palavra_secreta}")
-            print(f"Você utilizou {tentativa - 1} tentativas para tentar adivinhar a palavra secreta.")
-            # Se o número de tentativas for maior que a quantidade de letras, o jogador perdeu e o jogo termina, mostrando a palavra secreta
-        
-jogo(quantidade_letras)
-# Chama a função jogo com a quantidade de letras escolhida pelo jogador, para iniciar o jogo
+while True:
+    jogar_novamente = input("Deseja jogar novamente? (s/n): ").lower()
+    if jogar_novamente == 's':
+        jogo()
+    elif jogar_novamente == 'n':
+        print("Obrigado por jogar! Até a próxima.")
+        break
+    else:
+        print("Opção inválida. Digite 's' para sim ou 'n' para não.")
