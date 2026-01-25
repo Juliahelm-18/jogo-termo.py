@@ -1,65 +1,60 @@
-# Termo - Jogo de Palavras
-Termo é um jogo interativo de adivinhação de palavras em Python. O jogador deve descobrir uma palavra secreta escolhida aleatoriamente, com dicas sobre letras corretas e suas posições.
+# Jogo de adivinhação de palavras
+Um jogo de terminal em **Python**, inspirado em jogos de adivinhação de palavras, onde o jogador precisa descobrir a palavra secreta dentro de um número limitado de tentativas.
 
-# Regras do Jogo
-- Escolha a dificuldade do jogo: palavras de 5, 6 ou 7 letras.
+O projeto foi desenvolvido com foco em **organização de código**, **boas práticas**, **modularização** e **clareza**, sendo ideal para fins acadêmicos e portfólio no GitHub.
 
-- O número de tentativas é igual à quantidade de letras da palavra secreta.
+---
 
-- Após cada palpite, o jogo mostrará:
+## Funcionalidades
 
-     - Letras no lugar correto.
+- Escolha de dificuldade (palavras de **5, 6 ou 7 letras**)
+- Número de tentativas proporcional à dificuldade escolhida
+- Exibição de:
+  - Letras corretas na posição certa
+  - Letras que existem na palavra, mas podem estar em posição errada
+- Validação de entradas do usuário
+- Opção de jogar novamente
 
-     - Letras que existem na palavra, mas em posição diferente.
+---
 
-- O jogo termina quando o jogador acerta a palavra ou esgota todas as tentativas.
+## Como Executar
 
-- Ao final, é possível escolher jogar novamente.
+- Certifique-se de ter o Python 3.10+ instalado
+- Clone este repositório:
+```bash
+git clone https://github.com/seu-usuario/jogo-palavras.git
+```
+- Acesse a pasta do projeto:
+```bash
+cd termo
+```
+- Execute o jogo:
+```bash
+python main.py
+```
 
-# Funcionalidades
-- Geração aleatória de palavras de diferentes tamanhos.
+---
 
-- Validação automática de palpite (tamanho correto).
+## Regras do Jogo
+- Escolha o tamanho da palavra secreta (5, 6 ou 7 letras)
+- Você terá o mesmo número de tentativas que o tamanho da palavra
+- A cada tentativa, o jogo informa:
+    - Letras corretas na posição correta
+    - Letras que existem na palavra
+- O jogo termina quando:
+    - A palavra é descoberta
+    - Ou as tentativas acabam
 
-- Exibição clara de letras corretas e letras presentes na palavra.
+--- 
 
-- Loop para jogar novamente caso o jogador queira.
+## Tecnologias Utilizadas
+- Python
 
-# Estrutura do Código
-- escolher_palavra(): escolhe a palavra secreta e inicializa a lista de letras descobertas.
-
-- pedir_palpite(): solicita ao jogador um palpite válido.
-
-- atualizar_letras(): atualiza a lista de letras corretas na posição certa.
-
-- mostrar_status(): mostra as letras corretas e letras presentes na palavra.
-
-- jogo(): função principal que controla o fluxo do jogo.
-
-# Licença
-Este projeto é livre para uso e modificação.
-
-# Exemplo de uso
-``` Digite seu nome para iniciar o jogo: Julia
-Bem-vindo, Julia! Aqui estão as regras:
-- Escolha a dificuldade do jogo: palavras de 5, 6 ou 7 letras.
-- O número de tentativas é igual à quantidade de letras.
-- O jogo mostrará letras corretas e letras existentes na palavra.
-- O jogo termina quando você acertar ou acabar as tentativas.
-
-Escolha a quantidade de letras da palavra secreta (5, 6 ou 7): 5
-Digite seu palpite (5 letras): nuvem
-
-Parabéns! Você acertou a palavra secreta 'nuvem' em 1 tentativa!
-
-Deseja jogar novamente? (s/n): n
-
-Obrigado por jogar! Até a próxima. 
-
-
-
-
-
-
-
+## Conceitos Aplicados
+- Funções
+- Estruturas de repetição
+- Estruturas condicionais
+- Manipulação de strings
+- Estruturas de dados (list, set, dict)
+- Modularização de código
 

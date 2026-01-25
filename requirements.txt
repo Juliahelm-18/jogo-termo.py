@@ -1,2 +1,1 @@
-# Este projeto não utiliza dependências externas.
-# Funciona com Python 3.6 ou superior.
+python>=3.10
